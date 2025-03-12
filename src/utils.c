@@ -69,9 +69,9 @@ void	draw_fractal_row(t_data *data, int y, int *color_table)
 		scaled_x = (x - WIDTH / 2.0) * (1.0 / (0.5 * data->zoom * WIDTH))
 			+ data->move_x;
 		if (data->fractal == 0)
-			iter = mandelbrot(scaled_x, scaled_y, data);
-		else if (data->fractal == 1)
 			iter = julia(scaled_x, scaled_y, data);
+		else if (data->fractal == 1)
+			iter = mandelbrot(scaled_x, scaled_y, data);
 		else if (data->fractal == 2)
 			iter = tricorn(scaled_x, scaled_y, data);
 		put_pixel(data, x, y, set_color(iter, color_table, data));

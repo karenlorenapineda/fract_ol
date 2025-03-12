@@ -12,7 +12,7 @@
 
 #include "fract_ol.h"
 
-int	julia(double cre, double cim, t_data *data)
+int	mandelbrot(double cre, double cim, t_data *data)
 {
 	float	zr;
 	float	zi;
@@ -36,7 +36,7 @@ int	julia(double cre, double cim, t_data *data)
 	return (iter);
 }
 
-int	mandelbrot(double zr, double zi, t_data *data)
+int	julia(double zr, double zi, t_data *data)
 {
 	int		iter;
 	float	zr2;

@@ -52,18 +52,19 @@ void	check_color(t_data *data, char *av, int j)
 	}
 }
 
-int	check_julia_set(t_data *data, char **av)
+int	check_julia_set(t_data *data, char **av, int ac)
 {
 	const double	julia_re_vals[4] = {-0.7, -0.8, -0.4, 0.355};
 	const double	julia_im_vals[4] = {0.27015, 0.156, 0.6, 0.355};
 	int				index;
-
-	check_color(data, av[3], 0);
+	
 	index = ft_atoi(av[2]);
 	if (index < 0 || index > 3)
 		return (ft_printf("Julia sets: [0/1/2/3]\n"), 0);
 	data->julia_re = julia_re_vals[index];
 	data->julia_im = julia_im_vals[index];
+	if (ac > 3)
+		check_color(data, av[3], 0);
 	return (1);
 }
 
@@ -79,7 +80,10 @@ void	check_fractol_name(t_data *data, char **av, int ac)
 		data->color = 0;
 		if (ac > 2)
 		{
-			if (check_julia_set(data, av) == 0)
+			if (ft_strcmp(av[2], "r") == 0 || ft_strcmp(av[2], "g") == 0
+				|| ft_strcmp(av[2], "b") == 0 || ft_strcmp(av[2], "a") == 0)
+				check_color(data, av[2], 0);
+			else if (check_julia_set(data, av) == 0)
 				check_color(data, av[2], 0);
 		}
 	}

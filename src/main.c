@@ -57,7 +57,7 @@ int	check_julia_set(t_data *data, char **av, int ac)
 	const double	julia_re_vals[4] = {-0.7, -0.8, -0.4, 0.355};
 	const double	julia_im_vals[4] = {0.27015, 0.156, 0.6, 0.355};
 	int				index;
-	
+
 	index = ft_atoi(av[2]);
 	if (index < 0 || index > 3)
 		return (ft_printf("Julia sets: [0/1/2/3]\n"), 0);
@@ -83,7 +83,7 @@ void	check_fractol_name(t_data *data, char **av, int ac)
 			if (ft_strcmp(av[2], "r") == 0 || ft_strcmp(av[2], "g") == 0
 				|| ft_strcmp(av[2], "b") == 0 || ft_strcmp(av[2], "a") == 0)
 				check_color(data, av[2], 0);
-			else if (check_julia_set(data, av) == 0)
+			else if (check_julia_set(data, av, ac) == 0)
 				check_color(data, av[2], 0);
 		}
 	}
